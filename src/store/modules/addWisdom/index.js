@@ -6,6 +6,7 @@ export default {
     namespaced: true,
     state() {
         return {
+          likes: 0,
             wisdoms: [
                 {
                     id: "c1",

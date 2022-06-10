@@ -13,11 +13,14 @@ export default {
 </script>
 
 <style scoped>
-    .badge {
+div{
+  display: inline;
+}
+  .badge {
   background-color: #ccc;
   color: #252525;
-  border-radius: 30px;
-  padding: 0.5rem 1.5rem;
+  
+  padding: 5px;
   display: inline-block;
   margin-right: 0.5rem;
 }

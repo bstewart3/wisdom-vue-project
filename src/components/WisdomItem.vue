@@ -2,12 +2,13 @@
     <section>
       <base-card>
       <div>
-        <h3>{{ title }}</h3>
+        <h2>{{ title }}</h2>
          <div>
           <base-badge v-for="category in category" :key="category" :type="category" :title="category"></base-badge>
          </div>
         <h4>{{ desc }}</h4>
       </div>
+      
   
         <div class="actions">
           <base-button link :to="wisdomDetailsLink">View Details</base-button>
@@ -23,6 +24,9 @@ import BaseButton from './ui/BaseButton.vue';
 
 
 export default {
+  methods: {
+
+  },
   components: { BaseButton, BaseBadge },
     props: ['id', 'title', 'category', 'desc'],
     computed: {

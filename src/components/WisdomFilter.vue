@@ -2,6 +2,7 @@
  <div>
     <base-card>
         <h2>Find A Wisdom</h2>
+      <span class="filter-option">
         <span class="filter-option">
           <input type="checkbox" id="knowledge" checked @change="setFilter">
           <label for="knowledge">Knowledge</label>   
@@ -12,23 +13,36 @@
         </span>
          <span class="filter-option">
           <input type="checkbox" id="experience" checked @change="setFilter">
-          <label for="experience">Experience</label>   
+          <label for="experience">Experience</label>
         </span>
+        <base-button mode="outline" link :to="randomWisdomLink">Random Wisdom</base-button>
+       </span>
+       
     </base-card>
  </div>
 </template>
 
 <script>
+
 export default {
+  
     emits: ['change-filter'],
     data() {
         return {
+            randomWisdom: [],
             filters: {
                 knowledge: true,
                 learning: true,
                 experience: true
             }
         }
+    },
+    computed: {
+        randomWisdomLink() {
+        const wisdoms = this.$store.getters['wisdoms/wisdoms'];
+        var randomWisdom = wisdoms[Math.floor(Math.random()*wisdoms.length)];
+        return this.$route.path + '/' + randomWisdom.id;
+      },
     },
     methods: {
         setFilter(event) {
@@ -40,7 +54,7 @@ export default {
             };
             this.filters = updatedFilters
             this.$emit('change-filter', updatedFilters)
-        }
+        },
     }
 }
 </script>
@@ -52,6 +66,7 @@ export default {
 
     .filter-option {
     margin-right: 1rem;
+    display: inline-block;
     }
 
     .filter-option label,

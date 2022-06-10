@@ -1,32 +1,35 @@
 <template>
      <form @submit.prevent="submitForm">
-          <div class="form-control">
+          <div class="form-control" :class="{invalid: !title.isValid}">
             <label for="title">Title</label>
-            <input type="text" id="title" v-model.trim="title">   
+            <input type="text" id="title" v-model.trim="title.val" @blur="clearValidity('title')">
+            <p v-if="!title.isValid">Your Wisdom needs a title.</p>
           </div>
              
-          <div class="form-control">
+          <div class="form-control" :class="{invalid: !description.isValid}">
             <label>Description</label>
-            <textarea id="description" rows="5" v-model.trim="description"></textarea>   
+            <textarea id="description" rows="5" v-model.trim="description.val" @blur="clearValidity('description')" ></textarea>
+            <p v-if="!description.isValid">Your Wisdom needs some text.</p>   
           </div>
           
-          <div class="form-control">
+          <div class="form-control" :class="{invalid: !category.isValid}" >
             <h3>Category</h3>
             <div>
-              <input type="checkbox" id="knowledge" value="knowledge" v-model="category">
+              <input type="checkbox" id="knowledge" value="knowledge" v-model="category.val" @blur="clearValidity('category')" >
               <label for="knowledge">Knowledge</label>
             </div>
             <div>
-              <input type="checkbox" id="learning" value="learning" v-model="category">
+              <input type="checkbox" id="learning" value="learning" v-model="category.val" @blur="clearValidity('category')" >
               <label for="learning">Learning</label>
             </div>
             <div>
-              <input type="checkbox" id="experience" value="experience" v-model="category">
+              <input type="checkbox" id="experience" value="experience" v-model="category.val" @blur="clearValidity('category')" >
               <label for="experience">Experience</label>
-            </div>                                 
+            </div> 
+            <p v-if="!category.isValid">Please choose at least one category for your Wisdom</p>                                 
           </div>    
-
-        <base-button>Register</base-button>
+          <p v-if="!formIsValid">Please fix the errors above and try again.</p>
+        <base-button>Submit</base-button>
       </form> 
 </template>
 
@@ -35,22 +38,59 @@ export default {
     emits: ['save-data'],
     data() {
         return {
-            title: '',
-            category: [],
-            description: '',
+            title: {
+              val: '',
+              isValid: true
+            },
+            category: {
+              val: [],
+              isValid: true
+            },
+            description: {
+              val: '',
+              isValid: true
+            },
+            formIsValid: true
 
         };
     },
     methods: {
+        clearValidity(input){
+          this[input].isValid = true
+        },
+        validateForm() {
+          this.formIsValid = true;
+          if (this.title.val === '') {
+            this.title.isValid = false;
+            this.formIsValid = false;
+          }
+          if (this.category.val.length === 0) {
+            this.category.isValid = false;
+            this.formIsValid = false;
+          }
+          if (this.description.val === '') {
+            this.description.isValid = false;
+            this.formIsValid = false;
+          }
+              
+
+        },
         submitForm() {
+          this.validateForm();
+
+          if(!this.formIsValid){ 
+            return;
+          }
+
            const formData = {
-               title: this.title,
-               category: this.category,
-               desc: this.description,
+               title: this.title.val,
+               category: this.category.val,
+               desc: this.description.val,
                
            };
 
          this.$emit('save-data', formData)
+         this.$router.push('/');
           console.log(formData)
         }  
     }

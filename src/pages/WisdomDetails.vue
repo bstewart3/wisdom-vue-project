@@ -1,6 +1,7 @@
 <template>
     <div>
        <section>
+           <base-button link :to="goBack">Back</base-button>
            <base-card>
             <h2>{{ title }}</h2>
            </base-card>
@@ -8,15 +9,18 @@
        <section>
            <base-card>
              <base-badge v-for="category in category" :key="category" :type="category" :title="category"></base-badge>
-             <p>{{ desc }}</p>
-           </base-card>
+             <p>{{ desc }}</p> 
+
+           </base-card>  
        </section>
     </div>
 </template>
 
 
 <script>
+
 export default {
+  
    props: ['id'],
    data() {
        return {
@@ -24,6 +28,9 @@ export default {
        };
    },
    computed: {
+       goBack() {
+           return this.$route.back;
+       },
        category() {
            return this.selectedWisdom.category
        },

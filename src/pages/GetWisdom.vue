@@ -1,12 +1,20 @@
 <template>
 <div>
+  <base-dialog :show="!!error" title="An error occured!" @close="handleError">
+    <p>{{ error }}</p>
+  </base-dialog>
     <section>
         <wisdom-filter @change-filter="setFilters"></wisdom-filter>
     </section>
     <section>
      <base-card>
-       <ul v-if="hasWisdoms">
-           <wisdom-item v-for="wisdom in filteredWisdoms" :key="wisdom.id" :id="wisdom.id" :title="wisdom.title" :category="wisdom.category" :desc="wisdom.desc"></wisdom-item>
+       <base-button mode="outline" @click="loadWisdoms">Refresh</base-button>
+       <base-button link to="/auth?redirect=addWisdom" v-if="!isLoggedIn">Login to add a Wisdom</base-button>
+       <div v-if="isLoading">
+         <base-spinner></base-spinner>
+       </div>
+       <ul v-else-if="hasWisdoms">
+           <wisdom-item v-for="wisdom in filteredWisdoms.reverse()" :key="wisdom.id" :id="wisdom.id" :title="wisdom.title" :category="wisdom.category" :desc="wisdom.desc"></wisdom-item>
        </ul>
        <h3 v-else>No Wisdoms Available.. Try Again later or add you own wisdom.</h3> 
      </base-card> 
@@ -17,23 +25,36 @@
 <script>
 import WisdomItem from '../components/WisdomItem.vue';
 import WisdomFilter from '../components/WisdomFilter.vue'
+import BaseButton from '../components/ui/BaseButton.vue';
+import BaseDialog from '../components/ui/BaseDialog.vue';
 
 
 export default {
-  components: { WisdomItem, WisdomFilter },
+  components: { WisdomItem, WisdomFilter, BaseButton, BaseDialog },
   data() {
     return {
+      isLoading: false,
+      error: null,
+      randomWisdom: [],
       activeFilters: {
         knowledge: true,
         learning: true,
-        experience: true
+        experience: true,
       }
     }
   },
     computed: {
+      randomWisdomLink() {
+        const wisdoms = this.$store.getters['wisdoms/wisdoms'];
+        var randomWisdom = wisdoms[Math.floor(Math.random()*wisdoms.length)];
+        return this.$route.path + '/' + randomWisdom.id;
+      },
+      isLoggedIn() {
+        return this.$store.getters.isAuthenticated;
+      },
        filteredWisdoms() {
            const wisdoms = this.$store.getters['wisdoms/wisdoms'];
-           console.log(wisdoms)
+           
            return wisdoms.filter(wisdom => {
              if(this.activeFilters.knowledge && wisdom.category.includes('knowledge')) {
                return true;
@@ -48,13 +69,41 @@ export default {
            });
        },
        hasWisdoms() {
-           return this.$store.getters['wisdoms/hasWisdoms']
-       }
+           return !this.isLoading && this.$store.getters['wisdoms/hasWisdoms'];
+       },
+
+    },
+    created() {
+      this.loadWisdoms();
     },
     methods: {
       setFilters(updatedFilters) {
         this.activeFilters = updatedFilters
-      }
+      },
+
+
+      async loadWisdoms() {
+        this.isLoading = true;
+        try {
+          await this.$store.dispatch('wisdoms/loadWisdoms')
+          
+        } catch(error) {
+          this.error = error.message || 'Something went wrong';
+        }
+        
+        
+        this.isLoading = false;
+      },
+       loadRandomWisdom() {
+        const wisdoms = this.$store.getters['wisdoms/wisdoms'];
+        var randomWisdom = wisdoms[Math.floor(Math.random()*wisdoms.length)];
+
+      
+         console.log(randomWisdom.id)
+      },
+      handleError() {
+        this.error = null;
+      },
     }
 }
 </script>
