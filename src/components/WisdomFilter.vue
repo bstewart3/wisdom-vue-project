@@ -15,7 +15,10 @@
           <input type="checkbox" id="experience" checked @change="setFilter">
           <label for="experience">Experience</label>
         </span>
-        <base-button mode="outline" link :to="randomWisdomLink">Random Wisdom</base-button>
+        <span>
+          <input type="text" v-model="input">
+          <h3>{{ input }}</h3>
+        </span>
        </span>
        
     </base-card>
@@ -29,6 +32,7 @@ export default {
     emits: ['change-filter'],
     data() {
         return {
+            input: '',
             randomWisdom: [],
             filters: {
                 knowledge: true,
@@ -37,13 +41,7 @@ export default {
             }
         }
     },
-    computed: {
-        randomWisdomLink() {
-        const wisdoms = this.$store.getters['wisdoms/wisdoms'];
-        var randomWisdom = wisdoms[Math.floor(Math.random()*wisdoms.length)];
-        return this.$route.path + '/' + randomWisdom.id;
-      },
-    },
+
     methods: {
         setFilter(event) {
             const inputId = event.target.id;
@@ -55,6 +53,15 @@ export default {
             this.filters = updatedFilters
             this.$emit('change-filter', updatedFilters)
         },
+        wisdomSearch() {
+         const wisdoms = this.$store.getters['wisdoms/wisdoms'];
+         const filteredWisdoms = wisdoms.filter((wisdom) =>
+         wisdom.toLowerCase().includes(input.value.toLowerCase()));
+
+         this.$store.commit('setWisdoms/wisdoms',)
+          
+       }
+
     }
 }
 </script>
