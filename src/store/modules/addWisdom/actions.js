@@ -6,7 +6,11 @@ export default {
         
         title: data.title,
         category: data.category,
-        desc: data.desc
+        desc: data.desc,
+        timePosted: new Date().toTimeString(),
+        dayPosted: new Date().toDateString()
+
+        
     };
 
     const token = context.rootGetters.token;
@@ -50,7 +54,8 @@ export default {
         id: key,
         title: responseData[key].title,
         category: responseData[key].category,
-        desc: responseData[key].desc
+        desc: responseData[key].desc,
+        posted: responseData[key].dayPosted
 
       };
       wisdoms.push(wisdom);

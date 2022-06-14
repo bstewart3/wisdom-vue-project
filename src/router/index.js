@@ -10,7 +10,7 @@ import store from '../store/index.js' ;
 const routes = [
   {
     path: '/',
-    redirect:'/wisdoms' 
+    redirect:'/home' 
   },
   {
     path: '/wisdoms',

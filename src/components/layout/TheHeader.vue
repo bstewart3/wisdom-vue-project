@@ -1,9 +1,9 @@
 <template>
     <header>
         <nav>
-            <h1><router-link to="/home">Wisdom</router-link></h1>
+            <h1><router-link to="/home">Wisdom &#128161;</router-link></h1>
             <ul>
-                <li><router-link to="/wisdoms">Get Wisdom</router-link></li>
+                <li><router-link to="/wisdoms">All Wisdoms</router-link></li>
                 <li v-if="isLoggedIn"><router-link to="/addwisdom">Add Wisdom</router-link></li>
                 <li v-else><router-link to='/auth'>Login</router-link></li>
                 <li v-if="isLoggedIn"><base-button @click="logout">Logout</base-button></li>

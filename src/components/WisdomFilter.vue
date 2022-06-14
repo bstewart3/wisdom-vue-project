@@ -15,10 +15,7 @@
           <input type="checkbox" id="experience" checked @change="setFilter">
           <label for="experience">Experience</label>
         </span>
-        <span>
-          <input type="text" v-model="input">
-          <h3>{{ input }}</h3>
-        </span>
+
        </span>
        
     </base-card>
@@ -53,14 +50,7 @@ export default {
             this.filters = updatedFilters
             this.$emit('change-filter', updatedFilters)
         },
-        wisdomSearch() {
-         const wisdoms = this.$store.getters['wisdoms/wisdoms'];
-         const filteredWisdoms = wisdoms.filter((wisdom) =>
-         wisdom.toLowerCase().includes(input.value.toLowerCase()));
 
-         this.$store.commit('setWisdoms/wisdoms',)
-          
-       }
 
     }
 }

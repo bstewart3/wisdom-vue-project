@@ -87,10 +87,11 @@ export default {
                category: this.category.val,
                desc: this.description.val,
                
+               
            };
 
          this.$emit('save-data', formData)
-         this.$router.push('/');
+         this.$router.push('/wisdoms');
           console.log(formData)
         }  
     }

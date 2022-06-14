@@ -4,7 +4,7 @@
       <div>
         <h2>{{ title }}</h2>
          <div>
-          <base-badge v-for="category in category" :key="category" :type="category" :title="category"></base-badge>
+          <base-badge  v-for="category in category" :key="category" :type="category" :title="category"></base-badge>
          </div>
         <h4>{{ desc }}</h4>
       </div>

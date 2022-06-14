@@ -8,7 +8,8 @@
     </section>
     <section>
      <base-card>
-       <base-button mode="outline" @click="loadWisdoms">Refresh</base-button>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <base-button mode="outline" @click="loadWisdoms"><i class="fa fa-refresh"></i></base-button>
        <base-button link to="/auth?redirect=addWisdom" v-if="!isLoggedIn">Login to add a Wisdom</base-button>
        <div v-if="isLoading">
          <base-spinner></base-spinner>
@@ -33,6 +34,7 @@ export default {
   components: { WisdomItem, WisdomFilter, BaseButton, BaseDialog },
   data() {
     return {
+      input: '',
       isLoading: false,
       error: null,
       randomWisdom: [],
@@ -80,7 +82,11 @@ export default {
       setFilters(updatedFilters) {
         this.activeFilters = updatedFilters
       },
-
+      // wisdomSearch() {
+      //    const wisdoms = this.$store.getters['wisdoms/wisdoms'];
+      //    this.$store.state.wisdoms = wisdoms.reverse().filter((wisdom) =>
+      //    wisdom.toLowerCase().includes(this.input.value.toLowerCase()))
+      //  },
 
       async loadWisdoms() {
         this.isLoading = true;

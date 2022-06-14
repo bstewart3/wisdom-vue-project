@@ -43,7 +43,7 @@ export default {
     a {
       align-items: center;
       background-color: #FFFFFF;
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.188);
       border-radius: .25rem;
       box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
       box-sizing: border-box;
