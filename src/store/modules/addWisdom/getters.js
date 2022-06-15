@@ -2,6 +2,11 @@ export default {
     wisdoms(state) {
         return state.wisdoms;
     },
+    sortedWisdoms(state) {
+        return state.wisdoms.sort(function(a,b){
+            return new Date(b.date) - (a.date)
+        })
+    },
     hasWisdoms(state) {
         return state.wisdoms && state.wisdoms.length > 0;
     },

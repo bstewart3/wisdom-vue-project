@@ -1,20 +1,29 @@
 <template>
-    <section>
-           <base-card>
-            <h2>Whats something you wish you had learned earlier? What piece of wisdom can you share that might help the next generation? </h2>
-            <h3>The Wisdom Project was created to help document and share valuable knowledge and insights from users around the world.</h3>
-
-            <div class="landing-btns">
-             <base-button class="landing-btn" link :to="randomWisdomLink">Get Your Wisdom &#128161;</base-button>
-             <base-button class="landing-btn" link to="/wisdoms">View All Wisdoms &#9889;</base-button>
-             <img  id="hero-img" src="../assets/Creative_process_SVG.svg" width="750" height="500" alt=""> 
+ <div class="wrapper">
+    <div class="display-area">
+        <div class="container">
+         <div class="left">
+             <div class="landing-txt">
+              <h1>Let your insights thrive.</h1>
+              <h2>Share your knowledge with tomorrow.</h2>
+             </div>
+              <p class="text">
+                The Wisdom Project was created to help document and share valuable knowledge from users around the world.
+                Anonymously share your wisdoms and add to our growing encyclopedia of user insights.
+              </p>
+              <div class="landing-btns">
+                <base-button mode="cta" link to="/wisdoms">Try Now &#128161;</base-button>
+                <base-button mode="flat" link :to="randomWisdomLink">View a Random Wisdom &#9889;</base-button>
+              </div>
             </div>
-
-              
-           
-             
-        </base-card>
-    </section>
+            <div class="right">
+              <div class="hero">
+                <img  class="hero-img" src="../assets/Creative_process_SVG.svg" height="500" alt="peers gathering aroung a table with a light bulb in the center."> 
+              </div> 
+          </div>   
+        </div>
+      </div> 
+  </div>  
 </template>
 <script>
 export default {
@@ -29,17 +38,60 @@ export default {
 }
 </script>
 <style scoped>
-.landing-btns{
-    text-align: center;
+img{
+    width: 100%;
+}
+.container{
+    position: relative;
+    max-width: 81rem;
+    width: 100%;
+    margin: 3.5rem auto;
+    padding: 0 3rem;
+    z-index: 10;
+}
+.wrapper{
+  position: fixed;
+   padding: 2rem 0 2rem;
+   width: 100%;
+   min-height: 100vh;
+   overflow: hidden;
+   background: linear-gradient(#8ac9e0fe, #085c80);
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   
 }
 .landing-btn{
    margin: 10px;
-   background: linear-gradient(to left top, blue, red);
-   
+  
 }
 #hero-img{
-    text-align: center;
-    margin-top: 25px;
+    width: 123%;
+    transform: translate(15%, 25px);
 }
-
+.hero{
+    text-align: right;
+    
+}
+.landing-txt{
+    font-size: 1.4rem;
+    color: rgb(255, 255, 255);
+    text-transform: capitalize;
+    line-height: 1.4;
+    text-shadow: 2px 2px #0000002c;
+}
+.text{
+    color: rgb(251, 251, 251);
+    font-size: 1.1rem;
+    margin: 1.9rem 0 2.5rem;
+    max-width: 600px;
+    line-height: 2.3;
+    text-shadow: 1px 1px #0000002c;
+}
+.display-area .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+}
 </style>

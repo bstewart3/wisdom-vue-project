@@ -1,7 +1,7 @@
 <template>
     <header>
         <nav>
-            <h1><router-link to="/home">Wisdom &#128161;</router-link></h1>
+            <h1><router-link to="/home">&#128161;Wisdom </router-link></h1>
             <ul>
                 <li><router-link to="/wisdoms">All Wisdoms</router-link></li>
                 <li v-if="isLoggedIn"><router-link to="/addwisdom">Add Wisdom</router-link></li>
@@ -33,8 +33,8 @@ computed: {
 <style scoped>
 header {
   width: 100%;
-  height: 5rem;
-  background-color:rgb(7, 36, 200);
+  height: 6.5rem;
+  background-color:#05445E;
   display: flex;
   justify-content: center;
   align-items: center;

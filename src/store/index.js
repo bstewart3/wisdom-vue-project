@@ -8,8 +8,6 @@ const store = createStore({
       wisdoms: addWisdomModule,
       auth: authModule  
     },
-
-
 });
 
 export default store;

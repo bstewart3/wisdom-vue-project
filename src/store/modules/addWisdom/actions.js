@@ -1,36 +1,33 @@
 export default {
   async registerWisdom(context, data) {
     const userId = context.rootGetters.userId;
-    const wisdomId = userId + new Date().getTime();
+    const wisdomId = new Date().getTime() + userId;
     const wisdomData = {
         
         title: data.title,
         category: data.category,
         desc: data.desc,
-        timePosted: new Date().toTimeString(),
+        date: new Date().toTimeString(),
         dayPosted: new Date().toDateString()
-
-        
     };
 
     const token = context.rootGetters.token;
-    
     const response = await fetch(`https://wisdom-vue-project-default-rtdb.firebaseio.com/wisdoms/${wisdomId}.json?auth=` + token, {
       method: 'PUT',
       body: JSON.stringify(wisdomData)
     });
      
-
       if (!response.ok) {
-        //error..
+        
+          const error = new Error(response.message || 'Failed to post');
+          throw error;
+        
       }
-
 
     context.commit('registerWisdom', {
       ...wisdomData,
       id: userId
     });
-    // console.log(wisdomData)
   },
   
 
@@ -38,15 +35,11 @@ export default {
    
    const response = await fetch(`https://wisdom-vue-project-default-rtdb.firebaseio.com/wisdoms.json`);
    const responseData = await response.json();
-   
-  //  console.log(responseData)
 
    if(!response.ok) {
      const error = new Error(responseData.message || 'Failed to fetch');
      throw error;
-     
    }
-
     const wisdoms = [];
 
     for (const key in responseData) {
@@ -59,41 +52,7 @@ export default {
 
       };
       wisdoms.push(wisdom);
-      // console.log(key)
-
-      
     }
-
     context.commit('setWisdoms', wisdoms)
   },
-  // async loadRandomWisdom(context) {
-    
-  //   const response = await fetch(`https://wisdom-vue-project-default-rtdb.firebaseio.com/wisdoms.json`);
-  //   const responseData = await response.json();
-  //   const responseEntries = await Object.entries(responseData);
-  //   const randomResponseEntries = responseEntries[Math.floor(Math.random() * responseEntries.length)];
-  //   const wisdoms = [];
-
-  //   console.log(randomResponseEntries);
-
-     
-    
-
-  //   for (const key in randomResponseEntries) {
-  //     const wisdom = {
-  //       id: key,
-  //       title: randomResponseEntries[key].title,
-  //       category: randomResponseEntries[key].category,
-  //       desc: randomResponseEntries[key].desc
-
-  //     };
-  //     wisdoms.push(wisdom);
-  //     // console.log(key)
-
-      
-  //   }
-
-    
-  //   context.commit('setRandomWisdom', wisdoms)
-  //  },
 };

@@ -77,11 +77,10 @@ export default {
         },
         submitForm() {
           this.validateForm();
-
+          
           if(!this.formIsValid){ 
             return;
           }
-
            const formData = {
                title: this.title.val,
                category: this.category.val,

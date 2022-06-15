@@ -2,7 +2,8 @@
     <div>
     <base-card>
        <section>
-           <base-button id="close-btn" link :to="goBack"><i class="fa fa-close"></i></base-button>     
+           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+           <base-button id="close-btn" @click="$router.go(-1)"><i class="fa fa-close"></i></base-button>     
            <base-card>
             <h1>{{ title }}</h1>
            </base-card>
@@ -30,9 +31,6 @@ export default {
        };
    },
    computed: {
-       goBack() {
-           return '/wisdoms';
-       },
        category() {
            return this.selectedWisdom.category
        },
@@ -53,9 +51,3 @@ export default {
    }
 }
 </script>
-<style scoped>
-#close-btn{
-   
-   
-}
-</style>

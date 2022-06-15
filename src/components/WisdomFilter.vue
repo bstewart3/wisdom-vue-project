@@ -15,9 +15,7 @@
           <input type="checkbox" id="experience" checked @change="setFilter">
           <label for="experience">Experience</label>
         </span>
-
        </span>
-       
     </base-card>
  </div>
 </template>

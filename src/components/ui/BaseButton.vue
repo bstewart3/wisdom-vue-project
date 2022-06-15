@@ -66,18 +66,6 @@ export default {
       touch-action: manipulation;
       vertical-align: top;
       width: auto;
-
-          /* old button style */
-          /* text-decoration: none;
-          padding: 0.75rem 1.5rem;
-          font: inherit;
-          background-color: #3a0061;
-          border: 1px solid #3a0061;
-          color: white;
-          cursor: pointer;
-          border-radius: 30px;
-          margin-right: 0.5rem;
-          display: inline-block; */
     }
 
     a:hover,
@@ -90,9 +78,18 @@ export default {
 
     .flat {
     background-color: transparent;
-    color: #3a0061;
+    color: rgb(0, 0, 0);
     border: none;
     }
+    .cta{
+      background-color: rgb(66, 66, 66);
+      color: #FFFFFF;
+      border-radius: 10rem;
+    }
+    .cta:hover {
+      background-color: #3ca8d6;
+    }
+
 
     .outline {
     font-size: 14px;
@@ -109,6 +106,7 @@ export default {
     .flat:active,
     .outline:hover,
     .outline:active {
-    background-color: #d2e5ff;
+    background-color: transparent;
+    color: #ffffff;
     }
 </style>

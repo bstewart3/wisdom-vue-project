@@ -15,7 +15,7 @@
          <base-spinner></base-spinner>
        </div>
        <ul v-else-if="hasWisdoms">
-           <wisdom-item v-for="wisdom in filteredWisdoms.reverse()" :key="wisdom.id" :id="wisdom.id" :title="wisdom.title" :category="wisdom.category" :desc="wisdom.desc"></wisdom-item>
+           <wisdom-item v-for="wisdom in filteredWisdoms.reverse()" :key="wisdom.id" :id="wisdom.id" :title="wisdom.title" :category="wisdom.category" :desc="wisdom.desc" :date="wisdom.date"></wisdom-item>
        </ul>
        <h3 v-else>No Wisdoms Available.. Try Again later or add you own wisdom.</h3> 
      </base-card> 
@@ -56,7 +56,7 @@ export default {
       },
        filteredWisdoms() {
            const wisdoms = this.$store.getters['wisdoms/wisdoms'];
-           
+           console.log(wisdoms)
            return wisdoms.filter(wisdom => {
              if(this.activeFilters.knowledge && wisdom.category.includes('knowledge')) {
                return true;
@@ -82,11 +82,6 @@ export default {
       setFilters(updatedFilters) {
         this.activeFilters = updatedFilters
       },
-      // wisdomSearch() {
-      //    const wisdoms = this.$store.getters['wisdoms/wisdoms'];
-      //    this.$store.state.wisdoms = wisdoms.reverse().filter((wisdom) =>
-      //    wisdom.toLowerCase().includes(this.input.value.toLowerCase()))
-      //  },
 
       async loadWisdoms() {
         this.isLoading = true;
@@ -96,17 +91,15 @@ export default {
         } catch(error) {
           this.error = error.message || 'Something went wrong';
         }
-        
-        
         this.isLoading = false;
       },
+
        loadRandomWisdom() {
         const wisdoms = this.$store.getters['wisdoms/wisdoms'];
         var randomWisdom = wisdoms[Math.floor(Math.random()*wisdoms.length)];
-
-      
          console.log(randomWisdom.id)
       },
+      
       handleError() {
         this.error = null;
       },
