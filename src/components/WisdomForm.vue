@@ -15,15 +15,15 @@
           <div class="form-control" :class="{invalid: !category.isValid}" >
             <h3>Category</h3>
             <div>
-              <input type="checkbox" id="knowledge" value="knowledge" v-model="category.val" @blur="clearValidity('category')" >
+              <input type="radio" id="knowledge" value="knowledge" v-model="category.val" @blur="clearValidity('category')" >
               <label for="knowledge">Knowledge</label>
             </div>
             <div>
-              <input type="checkbox" id="learning" value="learning" v-model="category.val" @blur="clearValidity('category')" >
+              <input type="radio" id="learning" value="learning" v-model="category.val" @blur="clearValidity('category')" >
               <label for="learning">Learning</label>
             </div>
             <div>
-              <input type="checkbox" id="experience" value="experience" v-model="category.val" @blur="clearValidity('category')" >
+              <input type="radio" id="experience" value="experience" v-model="category.val" @blur="clearValidity('category')" >
               <label for="experience">Experience</label>
             </div> 
             <p v-if="!category.isValid">Please choose at least one category for your Wisdom</p>                                 
@@ -83,7 +83,7 @@ export default {
           }
            const formData = {
                title: this.title.val,
-               category: this.category.val,
+               category: [this.category.val],
                desc: this.description.val,
                
                
@@ -108,7 +108,7 @@ export default {
     margin-bottom: 0.5rem;
     }
 
-    input[type='checkbox'] + label {
+    input[type='radio'] + label {
     font-weight: normal;
     display: inline;
     margin: 0 0 0 0.5rem;
@@ -126,18 +126,18 @@ export default {
     textarea:focus {
     background-color: #f0e6fd;
     outline: none;
-    border-color: #3d008d;
+    border-color: #146ac6;
     }
 
-    input[type='checkbox'] {
+    input[type='radio'] {
     display: inline;
     width: auto;
     border: none;
     }
 
-    input[type='checkbox']:focus {
+    /* input[type='radio']:focus {
     outline: #3d008d solid 1px;
-    }
+    } */
 
     h3 {
     margin: 0.5rem 0;

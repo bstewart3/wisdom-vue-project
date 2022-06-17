@@ -65,10 +65,7 @@ img{
    margin: 10px;
   
 }
-#hero-img{
-    width: 123%;
-    transform: translate(15%, 25px);
-}
+
 .hero{
     text-align: right;
     
@@ -94,4 +91,25 @@ img{
     align-items: center;
     justify-content: center;
 }
+
+@media  screen and (max-width: 870px) {
+ 
+ .display-area .container {
+  grid-template-columns: 1fr;
+  text-align: center;
+ }
+ .wrapper{
+  position: relative;
+ }
+ .hero-img{
+    width: 90%;
+}
+
+}
+
+
+
+  
+
+
 </style>

@@ -46,11 +46,6 @@ export default {
     }
   },
     computed: {
-      randomWisdomLink() {
-        const wisdoms = this.$store.getters['wisdoms/wisdoms'];
-        var randomWisdom = wisdoms[Math.floor(Math.random()*wisdoms.length)];
-        return this.$route.path + '/' + randomWisdom.id;
-      },
       isLoggedIn() {
         return this.$store.getters.isAuthenticated;
       },
@@ -73,8 +68,8 @@ export default {
        hasWisdoms() {
            return !this.isLoading && this.$store.getters['wisdoms/hasWisdoms'];
        },
-
     },
+    
     created() {
       this.loadWisdoms();
     },
@@ -93,13 +88,6 @@ export default {
         }
         this.isLoading = false;
       },
-
-       loadRandomWisdom() {
-        const wisdoms = this.$store.getters['wisdoms/wisdoms'];
-        var randomWisdom = wisdoms[Math.floor(Math.random()*wisdoms.length)];
-         console.log(randomWisdom.id)
-      },
-      
       handleError() {
         this.error = null;
       },

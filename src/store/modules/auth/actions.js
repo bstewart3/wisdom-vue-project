@@ -16,7 +16,7 @@ export default {
       })
 
     },
-async auth (context, payload) {
+   async auth (context, payload) {
        const mode = payload.mode;
        let url  = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCfp4LFk1VMSGklC0HliBaR7wYZVNZBLKY';
 
@@ -57,6 +57,24 @@ async auth (context, payload) {
            userId: responseData.localId
         })
     },
+    async reset(_, payload) {
+
+      const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyCfp4LFk1VMSGklC0HliBaR7wYZVNZBLKY', {
+      method:  'POST',
+      body: JSON.stringify({
+          requestType: "PASSWORD_RESET",
+          email: payload.email
+      })
+   });
+   const responseData = await response.json();
+
+   if(!response.ok) {
+       
+      const error = new Error(responseData.message || 'Failed to send password reset email.')
+      throw error;
+      } 
+
+   },
     tryLogin(context) {
        const token = localStorage.getItem('token');
        const userId = localStorage.getItem('userId');

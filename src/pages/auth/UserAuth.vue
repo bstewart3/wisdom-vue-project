@@ -19,17 +19,19 @@
                 </div>
                 <p v-if="!formIsValid">Please enter a Valid email and password (must be at least 6 characters long).</p>
                 <base-button>{{ submitButtonCaption }}</base-button>
-                <base-button type="button" mode="flat" @click="switchAuthMode">{{ switchModeButtonCaption }}</base-button>    
+                <base-button type="button" mode="flat" @click="switchAuthMode">{{ switchModeButtonCaption }}</base-button>
+                <base-button mode="reset" link to='/resetpassword'>Reset Password</base-button>    
                </form>     
        </base-card>
     </div>
 </template>
 
 <script>
+import BaseButton from '../../components/ui/BaseButton.vue';
 import BaseDialog from '../../components/ui/BaseDialog.vue';
 import BaseSpinner from '../../components/ui/BaseSpinner.vue';
 export default {
-  components: { BaseDialog, BaseSpinner },
+  components: { BaseDialog, BaseSpinner, BaseButton },
     data() {
        return {
            email: '',

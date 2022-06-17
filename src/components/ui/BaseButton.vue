@@ -56,7 +56,7 @@ export default {
       justify-content: center;
       line-height: 1.25;
       margin: 0;
-      min-height: 3rem;
+      min-height: 2rem;
       padding: calc(.875rem - 1px) calc(1.5rem - 1px);
       position: relative;
       text-decoration: none;
@@ -81,15 +81,28 @@ export default {
     color: rgb(0, 0, 0);
     border: none;
     }
+    .logout{
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    }
     .cta{
       background-color: rgb(66, 66, 66);
       color: #FFFFFF;
       border-radius: 10rem;
     }
     .cta:hover {
-      background-color: #3ca8d6;
+      background-color: #3c7cd6;
     }
-
+    .reset {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    }
+    .reset:hover{
+    background-color: transparent;
+    color: #3960c2;
+    }
 
     .outline {
     font-size: 14px;
@@ -109,4 +122,21 @@ export default {
     background-color: transparent;
     color: #ffffff;
     }
+    @media screen and (max-width: 570px){
+      button{
+        font-size: 12px;
+        line-height: 0.75;
+        padding: 7px;
+      }
+      li{
+        width: 20%;
+      }
+    .reset {
+      font-size: 12px;
+    }
+
+    }
+
+
+
 </style>

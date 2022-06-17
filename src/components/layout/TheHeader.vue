@@ -1,21 +1,24 @@
 <template>
     <header>
-        <nav>
-            <h1><router-link to="/home">&#128161;Wisdom </router-link></h1>
+        <nav> 
+            <h1 id="logo-txt"><router-link to="/home">&#128161;Wisdom </router-link></h1>
             <ul>
-                <li><router-link to="/wisdoms">All Wisdoms</router-link></li>
+  
+                <li><router-link to="/wisdoms">Wisdoms</router-link></li>
                 <li v-if="isLoggedIn"><router-link to="/addwisdom">Add Wisdom</router-link></li>
                 <li v-else><router-link to='/auth'>Login</router-link></li>
-                <li v-if="isLoggedIn"><base-button @click="logout">Logout</base-button></li>
+                <li class="logout" v-if="isLoggedIn"><base-button @click="logout">Logout</base-button></li>
             </ul>
         </nav>
     </header>
 </template>
 
 <script>
-import BaseButton from '../ui/BaseButton.vue';
+// import BaseButton from '../ui/BaseButton.vue';
+
+
 export default {
-  components: { BaseButton },
+  // components: { BaseButton },
   methods:  {
     logout(){
       this.$store.dispatch('logout');
@@ -47,6 +50,8 @@ header a {
   padding: 0.75rem 1.5rem;
   border: 1px solid transparent;
 }
+
+
 
 a:active,
 a:hover,
@@ -89,5 +94,47 @@ header ul {
 li {
   margin: 0 0.5rem;
 }
+@media screen and (max-width: 570px){
+header {
+  padding: 10px 20px;
+  flex-direction: column;
+  min-width: 300px;
+}
+header nav {
+  position: absolute;
+  flex-direction: column;
+  font-size: 1em;
+  justify-content: center;
+  min-width: 300px;
+}
+header nav li {
+  margin: 0 -0.6rem;
+  border: none;
+}
+a:active,
+a:hover,
+a.router-link-active {
+  border: none;
+}
+
+
+}
+@media screen and (max-width: 300px) {
+  header nav {
+  position: absolute;
+  flex-direction: column;
+  font-size: 1em;
+  justify-content: center;
+}
+header nav li {
+  margin: 0 -0.6rem;
+  border: none;
+}
+}
+
+
+
+
+
 
 </style>

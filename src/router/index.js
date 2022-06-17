@@ -4,8 +4,10 @@ import GetWisdom from '../pages/GetWisdom.vue';
 import NotFound from '../pages/NotFound.vue';
 import WisdomDetails from '../pages/WisdomDetails.vue';
 import UserAuth from '../pages/auth/UserAuth.vue';
+import PassWordReset from '../pages/auth/PassWordReset.vue';
 import LandingPage from '../pages/LandingPage.vue';
 import store from '../store/index.js' ;
+
 
 const routes = [
   {
@@ -39,6 +41,10 @@ const routes = [
     component: UserAuth,
     meta: { requiresUnauth: true
     }
+  },
+  {
+    path: '/resetpassword',
+    component: PassWordReset,
   }
 ]
 
