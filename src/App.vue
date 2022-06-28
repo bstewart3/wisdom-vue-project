@@ -71,5 +71,11 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+@media screen and (max-width: 350px) {
+
+#app{
+  min-width: 350px;
+}
+}
 
 </style>

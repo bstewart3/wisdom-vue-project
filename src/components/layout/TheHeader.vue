@@ -1,24 +1,27 @@
 <template>
     <header>
         <nav> 
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
             <h1 id="logo-txt"><router-link to="/home">&#128161;Wisdom </router-link></h1>
             <ul>
   
                 <li><router-link to="/wisdoms">Wisdoms</router-link></li>
                 <li v-if="isLoggedIn"><router-link to="/addwisdom">Add Wisdom</router-link></li>
                 <li v-else><router-link to='/auth'>Login</router-link></li>
-                <li class="logout" v-if="isLoggedIn"><base-button @click="logout">Logout</base-button></li>
+                <li v-if="isLoggedIn"><router-link to="/userWisdoms"><i class="fas fa-user-circle fa-lg  "></i></router-link></li>
+                <li id="logout" v-if="isLoggedIn"><base-button @click="logout">Logout</base-button></li>
+                
             </ul>
         </nav>
     </header>
 </template>
 
 <script>
-// import BaseButton from '../ui/BaseButton.vue';
+
 
 
 export default {
-  // components: { BaseButton },
+  
   methods:  {
     logout(){
       this.$store.dispatch('logout');
@@ -36,6 +39,7 @@ computed: {
 <style scoped>
 header {
   width: 100%;
+  min-width: 624px;
   height: 6.5rem;
   background-color:#05445E;
   display: flex;
@@ -98,14 +102,14 @@ li {
 header {
   padding: 10px 20px;
   flex-direction: column;
-  min-width: 300px;
+  min-width: 340px;
 }
 header nav {
   position: absolute;
   flex-direction: column;
   font-size: 1em;
   justify-content: center;
-  min-width: 300px;
+  min-width: 350px;
 }
 header nav li {
   margin: 0 -0.6rem;
@@ -119,17 +123,19 @@ a.router-link-active {
 
 
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 350px) {
+
   header nav {
   position: absolute;
   flex-direction: column;
-  font-size: 1em;
+  font-size: 0.7em;
   justify-content: center;
 }
 header nav li {
   margin: 0 -0.6rem;
   border: none;
 }
+
 }
 
 

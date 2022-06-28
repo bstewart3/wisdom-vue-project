@@ -17,7 +17,7 @@
        <ul v-else-if="hasWisdoms">
            <wisdom-item v-for="wisdom in filteredWisdoms.reverse()" :key="wisdom.id" :id="wisdom.id" :title="wisdom.title" :category="wisdom.category" :desc="wisdom.desc" :date="wisdom.date"></wisdom-item>
        </ul>
-       <h3 v-else>No Wisdoms Available.. Try Again later or add you own wisdom.</h3> 
+       <h3 v-else>No Wisdoms Available.. Try Again later or add your own wisdom.</h3> 
      </base-card> 
     </section>
 </div>

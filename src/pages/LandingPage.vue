@@ -27,6 +27,9 @@
 </template>
 <script>
 export default {
+  created() {
+    this.$store.dispatch('wisdoms/loadWisdoms')
+  },
     computed: { 
         randomWisdomLink() {
         const wisdoms = this.$store.getters['wisdoms/wisdoms'];

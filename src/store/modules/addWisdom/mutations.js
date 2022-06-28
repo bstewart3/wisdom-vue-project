@@ -8,7 +8,8 @@ export default {
     }, 
     setLikeCounter(state) {
         state.likes = state.likes + 1;
-    }
+    },
+
     
 
 }; 

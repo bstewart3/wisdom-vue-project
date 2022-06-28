@@ -48,6 +48,7 @@ export default {
        this.selectedWisdom = this.$store.getters['wisdoms/wisdoms'].find(
            (wisdom) => wisdom.id === this.id
         );
+        this.$store.getters['wisdoms/wisdoms'];
    }
 }
 </script>

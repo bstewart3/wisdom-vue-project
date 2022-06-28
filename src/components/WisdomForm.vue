@@ -35,6 +35,7 @@
 
 <script>
 export default {
+  props: ['id'],
     emits: ['save-data'],
     data() {
         return {
@@ -85,7 +86,7 @@ export default {
                title: this.title.val,
                category: [this.category.val],
                desc: this.description.val,
-               
+               id: this.id
                
            };
 
@@ -134,10 +135,6 @@ export default {
     width: auto;
     border: none;
     }
-
-    /* input[type='radio']:focus {
-    outline: #3d008d solid 1px;
-    } */
 
     h3 {
     margin: 0.5rem 0;

@@ -17,5 +17,11 @@ export default {
     },
     likes(state) {
         return state.likes
-    }
+    },
+    userId(rootGetters) {
+        return rootGetters.userId
+    },
+    token(rootGetters) {
+        return rootGetters.token
+    },
 }
