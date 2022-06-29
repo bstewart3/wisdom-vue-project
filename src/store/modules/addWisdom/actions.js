@@ -10,7 +10,6 @@ export default {
         date: new Date().toTimeString(),
         dayPosted: new Date().toDateString()
     };
-    
     const token = context.rootGetters.token;
     const response = await fetch(`https://wisdom-vue-project-default-rtdb.firebaseio.com/wisdoms/${wisdomId}.json?auth=` + token, {
       method: 'PUT',

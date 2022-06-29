@@ -135,6 +135,12 @@ header nav li {
   margin: 0 -0.6rem;
   border: none;
 }
+header, nav {
+  overflow-x: hidden;
+}
+body{
+  position: relative;
+}
 
 }
 

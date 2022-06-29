@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="wrapper">
       <base-card>
       <div>
         <h2>{{ title }}</h2>
@@ -63,5 +63,5 @@ div {
 .actions {
   display: flex;
   justify-content: flex-end;
-}
+} 
 </style>

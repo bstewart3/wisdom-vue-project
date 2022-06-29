@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="wrapper">
   <base-dialog :show="!!error" title="An error occured!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
@@ -100,5 +100,6 @@ ul {
   margin: 0;
   padding: 0;
 }
+
 
 </style>

@@ -46,6 +46,7 @@ html {
 body {
   margin: 0;
   min-width: 300px;
+
   
 }
 
@@ -71,10 +72,23 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+@media screen and (max-width: 530px) {
+
+#app{
+  min-width: 330px;
+}
+html, body {
+  overflow-x: hidden;
+}
+body{
+  position: relative;
+}
+}
 @media screen and (max-width: 350px) {
 
 #app{
-  min-width: 350px;
+  min-width: 310px;
 }
 }
 
