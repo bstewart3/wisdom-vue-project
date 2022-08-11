@@ -82,17 +82,14 @@ export default {
           if(!this.formIsValid){ 
             return;
           }
-           const formData = {
-               title: this.title.val,
-               category: [this.category.val],
-               desc: this.description.val,
-               id: this.id
-               
-           };
-
-         this.$emit('save-data', formData)
-         this.$router.push('/wisdoms');
-          console.log(formData)
+          const formData = {
+              title: this.title.val,
+              category: [this.category.val],
+              desc: this.description.val,
+              id: this.id
+          };
+        this.$emit('save-data', formData)
+        this.$router.push('/wisdoms');
         }  
     }
 }
