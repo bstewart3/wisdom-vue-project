@@ -25,8 +25,6 @@ export default {
            const wisdoms = this.$store.getters['wisdoms/wisdoms'];
            const userId = localStorage.getItem('userId');
            const userWisdoms = wisdoms.filter( (wisdom) => wisdom.userId === userId );
-           
-          console.log(userWisdoms)
         return userWisdoms
        },
     }

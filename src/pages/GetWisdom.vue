@@ -51,7 +51,6 @@ export default {
       },
        filteredWisdoms() {
            const wisdoms = this.$store.getters['wisdoms/wisdoms'];
-           console.log(wisdoms)
            return wisdoms.filter(wisdom => {
              if(this.activeFilters.knowledge && wisdom.category.includes('knowledge')) {
                return true;
